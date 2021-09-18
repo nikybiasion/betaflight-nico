@@ -644,7 +644,7 @@ static void osdBackgroundCameraFrame(osdElementParms_t *element)
 static void osdBackgroundCraftName(osdElementParms_t *element)
 {
     if (strlen(pilotConfig()->name) == 0) {
-        strcpy(element->buff, "CRAFT_NAME");
+        strcpy(element->buff, "COSO");
     } else {
         unsigned i;
         for (i = 0; i < MAX_NAME_LENGTH; i++) {
@@ -724,7 +724,7 @@ static void osdElementDebug(osdElementParms_t *element)
 static void osdElementDisarmed(osdElementParms_t *element)
 {
     if (!ARMING_FLAG(ARMED)) {
-        tfp_sprintf(element->buff, "DISARMED");
+        tfp_sprintf(element->buff, "STUA'");
     }
 }
 
@@ -1325,7 +1325,7 @@ static void osdElementWarnings(osdElementParms_t *element)
     }
 #endif // USE_DSHOT
     if (osdWarnGetState(OSD_WARNING_FAIL_SAFE) && failsafeIsActive()) {
-        tfp_sprintf(element->buff, "FAIL SAFE");
+        tfp_sprintf(element->buff, "CIAVA'");
         element->attr = DISPLAYPORT_ATTR_CRITICAL;
         SET_BLINK(OSD_WARNINGS);
         return;
@@ -1333,7 +1333,7 @@ static void osdElementWarnings(osdElementParms_t *element)
 
     // Warn when in flip over after crash mode
     if (osdWarnGetState(OSD_WARNING_CRASH_FLIP) && isFlipOverAfterCrashActive()) {
-        tfp_sprintf(element->buff, "CRASH FLIP");
+        tfp_sprintf(element->buff, "TORNA DRIT");
         element->attr = DISPLAYPORT_ATTR_INFO;
         return;
     }
@@ -1363,7 +1363,7 @@ static void osdElementWarnings(osdElementParms_t *element)
 
     // RSSI
     if (osdWarnGetState(OSD_WARNING_RSSI) && (getRssiPercent() < osdConfig()->rssi_alarm)) {
-        tfp_sprintf(element->buff, "RSSI LOW");
+        tfp_sprintf(element->buff, "RSSI MARZA");
         element->attr = DISPLAYPORT_ATTR_WARNING;
         SET_BLINK(OSD_WARNINGS);
         return;
@@ -1389,7 +1389,7 @@ static void osdElementWarnings(osdElementParms_t *element)
 #endif // USE_RX_LINK_QUALITY_INFO
 
     if (osdWarnGetState(OSD_WARNING_BATTERY_CRITICAL) && batteryState == BATTERY_CRITICAL) {
-        tfp_sprintf(element->buff, " LAND NOW");
+        tfp_sprintf(element->buff, " MONA VIEN ZO");
         element->attr = DISPLAYPORT_ATTR_CRITICAL;
         SET_BLINK(OSD_WARNINGS);
         return;
@@ -1434,7 +1434,7 @@ static void osdElementWarnings(osdElementParms_t *element)
 #ifdef USE_ADC_INTERNAL
     const int16_t coreTemperature = getCoreTemperatureCelsius();
     if (osdWarnGetState(OSD_WARNING_CORE_TEMPERATURE) && coreTemperature >= osdConfig()->core_temp_alarm) {
-        tfp_sprintf(element->buff, "CORE %c: %3d%c", SYM_TEMPERATURE, osdConvertTemperatureToSelectedUnit(coreTemperature), osdGetTemperatureSymbolForSelectedUnit());
+        tfp_sprintf(element->buff, "BRUSA %c: %3d%c", SYM_TEMPERATURE, osdConvertTemperatureToSelectedUnit(coreTemperature), osdGetTemperatureSymbolForSelectedUnit());
         element->attr = DISPLAYPORT_ATTR_WARNING;
         SET_BLINK(OSD_WARNINGS);
         return;
@@ -1495,7 +1495,7 @@ static void osdElementWarnings(osdElementParms_t *element)
 #endif // USE_ESC_SENSOR
 
     if (osdWarnGetState(OSD_WARNING_BATTERY_WARNING) && batteryState == BATTERY_WARNING) {
-        tfp_sprintf(element->buff, "LOW BATTERY");
+        tfp_sprintf(element->buff, "VA PIAN!");
         element->attr = DISPLAYPORT_ATTR_WARNING;
         SET_BLINK(OSD_WARNINGS);
         return;
@@ -1522,7 +1522,7 @@ static void osdElementWarnings(osdElementParms_t *element)
     // Show warning if battery is not fresh
     if (osdWarnGetState(OSD_WARNING_BATTERY_NOT_FULL) && !(ARMING_FLAG(ARMED) || ARMING_FLAG(WAS_EVER_ARMED)) && (getBatteryState() == BATTERY_OK)
           && getBatteryAverageCellVoltage() < batteryConfig()->vbatfullcellvoltage) {
-        tfp_sprintf(element->buff, "BATT < FULL");
+        tfp_sprintf(element->buff, "MONA CAMBIA LIPO");
         element->attr = DISPLAYPORT_ATTR_INFO;
         return;
     }

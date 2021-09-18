@@ -882,7 +882,7 @@ static timeDelta_t osdShowArmed(void)
     } else {
         ret = (REFRESH_1S / 2);
     }
-    displayWrite(osdDisplayPort, 12, 7, DISPLAYPORT_ATTR_NONE, "ARMED");
+    displayWrite(osdDisplayPort, 12, 7, DISPLAYPORT_ATTR_NONE, "TACA'");
 
     return ret;
 }
