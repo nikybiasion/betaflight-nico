@@ -1283,6 +1283,7 @@ void FAST_CODE pidController(const pidProfile_t *pidProfile, timeUs_t currentTim
 #endif
 
     const float tpaFactor = getThrottlePIDAttenuation();
+    const float tpaFactorP = getThrottlePIDAttenuationP();
 
 #if defined(USE_ACC)
     const rollAndPitchTrims_t *angleTrim = &accelerometerConfig()->accelerometerTrims;
@@ -1292,9 +1293,9 @@ void FAST_CODE pidController(const pidProfile_t *pidProfile, timeUs_t currentTim
 #endif
 
 #ifdef USE_TPA_MODE
-    const float tpaFactorKp = (currentControlRateProfile->tpaMode == TPA_MODE_PD) ? tpaFactor : 1.0f;
+    const float tpaFactorKp = (currentControlRateProfile->tpaMode == TPA_MODE_PD) ? tpaFactorP : 1.0f;
 #else
-    const float tpaFactorKp = tpaFactor;
+    const float tpaFactorKp = 1.0f;
 #endif
 
 #ifdef USE_YAW_SPIN_RECOVERY

@@ -42,6 +42,7 @@ float getSetpointRate(int axis);
 float getRcDeflection(int axis);
 float getRcDeflectionAbs(int axis);
 float getThrottlePIDAttenuation(void);
+float getThrottlePIDAttenuationP(void);
 void updateRcCommands(void);
 void resetYawAxis(void);
 void initRcProcessing(void);
